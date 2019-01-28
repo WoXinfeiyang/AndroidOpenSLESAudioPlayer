@@ -9,6 +9,18 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk{
+            moduleName "PlayAudio"//NativeModuleName名字需要和System.loadLibrary方法中保持一致
+            abiFilters "armeabi-v7a"//cpu的类型
+        }
+
+        sourceSets {
+            main {
+                //jniLibs.srcDirs  'src/main/libs'/*注释掉此行,否则会导致More than one file was found with OS independent path编译错误*/
+                jni.srcDirs = []
+            }
+        }
+
     }
     buildTypes {
         release {
@@ -16,6 +28,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    externalNativeBuild {
+        ndkBuild {
+            path file('src/main/jni/Android.mk')
+        }
+    }
+
 }
 
 dependencies {
