@@ -16,6 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".PlayAudioFromAssetsActivity"
+            android:label="@string/title_activity_play_audio_from_assets"></activity>
+
     </application>
 
 </manifest>
